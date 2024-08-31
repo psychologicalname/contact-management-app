@@ -22,7 +22,7 @@ const Sidebar: React.FC = () => {
             </div>
 
             {/* Mobile menu */}
-            <div className={`lg:hidden ${!isOpen ? 'hidden' : 'flex'} bg-gray-800 z-10 rounded-l-lg absolute top-10 right-0`}>
+            <div className={`md:hidden ${!isOpen ? 'hidden' : 'flex'} bg-gray-800 z-10 rounded-l-lg absolute top-10 right-0`}>
                 <div className="flex flex-col justify-end items-start">
                     <NavLink
                         to="/"
