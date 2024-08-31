@@ -12,31 +12,29 @@ const Sidebar: React.FC = () => {
     return (
         <nav className="bg-gray-800 text-white">
             {/* Mobile menu button */}
-            <div className="md:hidden flex justify-between items-center p-4">
+            <div className="md:hidden sticky top-0 flex justify-between items-center p-4">
                 <h1 className="text-2xl font-bold">LOGO</h1>
-                <button onClick={toggleMenu} aria-label="Toggle menu">
-                    {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-                </button>
+                <div className='justify-end'>
+                    <button onClick={toggleMenu} aria-label="Toggle menu">
+                        {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile menu */}
-            <div
-                className={`md:hidden fixed inset-0 top-14 bg-gray-800 text-white transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
-            >
-                <div className="flex flex-col p-4">
+            <div className={`${!isOpen ? 'hidden' : 'flex'} bg-gray-800 z-10 rounded-l-lg absolute top-10 right-0`}>
+                <div className="flex flex-col justify-end items-start">
                     <NavLink
                         to="/"
-                        className={({ isActive }) =>
-                            `py-2 px-4 ${isActive ? 'bg-gray-600' : 'hover:bg-gray-700'}`
-                        }
+                        className='py-2 px-4'
+                        onClick={toggleMenu}
                     >
                         Contact
                     </NavLink>
                     <NavLink
                         to="/Dashboard"
-                        className={({ isActive }) =>
-                            `py-2 px-4 ${isActive ? 'bg-gray-600' : 'hover:bg-gray-700'}`
-                        }
+                        className='py-2 px-4'
+                        onClick={toggleMenu}
                     >
                         Charts and Maps
                     </NavLink>
@@ -44,7 +42,7 @@ const Sidebar: React.FC = () => {
             </div>
 
             {/* Desktop menu */}
-            <div className="hidden md:flex flex-col w-52 lg:w-64 sticky top-0">
+            <div className="hidden md:flex flex-col w-52 lg:w-64 h-screen sticky top-0">
                 <h1 className="text-2xl font-bold p-6">LOGO</h1>
                 <div className="flex flex-col">
                     <NavLink
